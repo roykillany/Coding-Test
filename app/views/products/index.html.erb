@@ -1,0 +1,32 @@
+<div class="products">
+	<h1>Products</h1>
+	<div class="row grid">
+		<% @products.each do |product| %>
+			<div class="item large-4 small-6 columns" data-id="<%= product.id %>" onclick="productModalToggle(this, event)">
+				<div class="panel" data-id="<%= id(product) %>">
+					<div class="brand"><%= brand(product) %></div>
+					<div class="name"><%= name_and_model(product) %></div>
+					<div class="price"><%= price(product) %></div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<div class="product-modal modal hidden">
+		<div class="content">
+			<i class="fa fa-times close" onclick="closeModal(this)"></i>
+			<div class="brand"></div>
+			<div class="name"><div class="model"></div></div>
+			<div class="price"></div>
+			<div class="desc"></div>
+			<form action="/addtocart" method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="hidden" name="product_id" value="">
+				<button class="add-cart" type="submit">
+					<a href="javascript:void(0)" title="Add to Cart">
+						<i class="fa fa-shopping-cart"></i>
+					</a>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

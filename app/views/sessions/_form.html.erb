@@ -1,0 +1,15 @@
+<form class="sign-in" action="/login" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label class="username">Username
+	  <input class="username" type="text" name="user[username]" value="">
+	  <%= display_error("username", flash.now[:errors]) %>
+  </label>
+
+  <label class="password">Password
+	  <input class="password" type="password" name="user[password]" value="">
+	  <%= display_error("password", flash.now[:errors]) %>
+  </label>
+
+  <button name="button" class="submit">Sign In</button>
+</form>

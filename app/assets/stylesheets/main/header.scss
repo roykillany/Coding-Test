@@ -1,0 +1,120 @@
+@import "main/base";
+
+header {
+	position: fixed;
+	width: 100%;
+	background-color: $base-color;
+	z-index: 1;
+	box-shadow: 0px 0px 5px 1px black;
+	color: white;
+
+	.menu {
+		display: inline-block;
+
+		.menuicon, .greeting {
+			display: inline-block;
+			margin: 20px;
+			padding: 10px;
+		}
+		.greeting {
+			float: right;
+
+			a:hover {
+				color: white;
+				text-decoration: underline;
+			}
+		}
+		.menuicon {
+			&:hover {
+				cursor: pointer;
+			}
+
+			.top, .mid, .bot {
+				height: 5px;
+				width: 20px;
+			}
+			.top .bar:first-child, .bot .bar:first-child {
+				padding-left: 10px;
+			}
+			.top .bar:after, .bot .bar:after {
+				transition: transform 0.2s linear;
+			}
+			.bar:after, .mid:after {
+				content: "";
+				position: absolute;
+				height: 2px;
+				background-color: white;
+			}
+			.mid:after {
+				width: 20px;
+			}
+			.bar:after {
+				width: 5px;
+				padding-left: 5px;
+			}
+
+			&.clicked {
+				.top, .bot {
+					transform: translateX(-23%);
+				}
+				.bar:after {
+					padding-left: 18px;
+					width: 0px;
+				}
+				.top .bar:first-child:after, .bot .bar:last-child:after {
+					transform: rotate(-45deg);
+					transition: transform 0.2s linear;
+				}
+				.top .bar:last-child:after, .bot .bar:first-child:after {
+					transform: rotate(45deg);
+					transition: transform 0.2s linear;
+				}
+				.mid:after {
+					background-color: $base-color;
+				}
+			}
+		}
+		.dropdown {
+			position: fixed;
+			background-color: white;
+			box-shadow: 2px 2px 6px -1px black;
+			left: -148px;
+			transition: left 0.2s linear;
+			color: black;
+			top: 80px;
+
+			&.active {
+				left: 0;
+				transition: left 0.2s linear;
+			}
+			li {
+				padding: 15px 20px;
+				a {
+					font-size: 20px;
+				}
+			}
+			li:last-child {
+				form {
+					display: inline;
+				}
+			}
+		}
+	}
+	.sessions {
+		display: inline-block;
+		float: right;
+
+		form {
+			input:nth-child(2) {
+				margin: 20px;
+				padding: 10px;
+				border: 1px solid white;
+				border-radius: $base-border-radius;
+
+				&:hover {
+					background-color: $base-light-color;
+				}
+			}
+		}
+	}
+}

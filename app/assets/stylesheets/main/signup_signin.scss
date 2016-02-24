@@ -1,0 +1,30 @@
+@import "main/base";
+
+.signup, .signin {
+	position: relative;
+	top: 42%;
+	transform: translateY(-50%);
+	width: 200px;
+	margin: 0 auto;
+	padding: 80px;
+	border: 1px solid gray;
+	border-radius: $base-border-radius;
+	form {
+		label {
+			position: relative;
+		}
+	}
+	button {
+		float: right;
+		padding: 10px 15px;
+		border: 1px solid $base-color;
+		border-radius: $base-border-radius;
+		color: $base-color;
+
+		&:active {
+			border: 1px solid $dark-color;
+			color: $dark-color;
+			box-shadow: $base-inset;
+		}
+	}
+}

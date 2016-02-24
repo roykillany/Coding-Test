@@ -1,0 +1,31 @@
+<div class="cart">
+	<h1>Your Cart</h1>
+
+	<% if @cart.cart_items.empty? %>
+		<h2>Cart is empty <a href="/products">Go buy something!</a></h2>
+	<% else %>
+		<div class="row grid">
+			<% @cart.cart_items.each do |cart_item| %>
+				<% product = cart_item.product %>
+				<div class="item large-4 small-6 columns">
+					<form action="/removefromcart" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input type="hidden" name="product_id" value="<%= product.id %>">
+						<button class="remove-cart" type="submit">
+							<a href="javascript:void(0)" title="Remove from Cart">
+								<i class="fa fa-times"></i>
+							</a>
+						</button>
+					</form>
+					<div class="panel">
+						<div class="brand"><%= brand(product) %></div>
+						<div class="name"><%= name_and_model(product) %></div>
+						<div class="sku">SKU: <%= sku(product) %></div>
+						<div class="price"><%= price(product) %></div>
+						<div class="desc"><%= desc(product) %></div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>

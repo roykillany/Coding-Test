@@ -1,0 +1,33 @@
+<header>
+	<div class="menu">
+		<span class="menuicon" onclick="menuToggle()">
+			<div class="top">
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+			<div class="mid"></div>
+			<div class="bot">
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+		</span>
+		<% if current_user %>
+			<h3 class="greeting">Welcome, <a href="/users/<%= current_user.id %>"><%= username(current_user) %></a>
+			</h3>
+		<% end %>
+		<ul class="dropdown">
+			<li><a href="/products"><i class="fa fa-product-hunt"></i> Products</a></li>
+			<% if current_user %>
+				<li><a href="/carts/<%= current_user.cart.id %>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+				<li><a href="javascript:void(0)"><i class="fa fa-sign-out"></i> <%= button_to "Sign Out", sessions_url, method: :delete %></a></li>
+			<% else %>
+				<li><a href="/"><i class="fa fa-sign-in"></i> Sign In</a></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="sessions">
+		<% if current_user %>
+			<%= button_to "Sign Out", sessions_url, method: :delete %>
+		<% end %>
+	</div>
+</header>
